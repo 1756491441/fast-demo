@@ -2,3 +2,51 @@ spring:
   mvc:
     servlet:
       path: /zhaoxp
+  datasource:
+    url: jdbc:mysql://192.168.30.128:3306/mytest?characterEncoding=utf8&useSSL=false
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+    druid:
+      #监控统计拦截的filters
+      filters: stat,wall,slf4j
+      #配置初始化大小/最小/最大
+      initial-size: 10
+      min-idle: 10
+      max-active: 50
+      #获取连接等待超时时间
+      max-wait: 60000
+      #间隔多久进行一次检测，检测需要关闭的空闲连接
+      time-between-eviction-runs-millis: 60000
+      #一个连接在池中最小生存的时间
+      min-evictable-idle-time-millis: 300000
+      validation-query: SELECT 'x'
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      #打开PSCache，并指定每个连接上PSCache的大小。oracle设为true，mysql设为false。分库分表较多推荐设置为false
+      pool-prepared-statements: false
+      max-pool-prepared-statement-per-connection-size: 20
+
+  redis:
+    host: 192.168.1.115
+    password: vlifevlife
+    lettuce:
+      shutdown-timeout: 300ms #关闭超时
+      pool:
+        max-active: 600 #连接池最大连接数
+        max-wait: 1000 #连接池最大阻塞等待时间
+        max-idle: 300 #连接池中的最大空闲连接
+        min-idle: 0 #连接池中的最小空闲连接
+      timeout: 60000 #连接超时时间(ms)
+dubbo:
+  application:
+    name: fast
+  registry:
+    address: zookeeper://192.168.30.128:2181,192.168.30.129:2181,192.168.30.130:2181
+    check: false
+  scan:
+    base-packages: com.zhaoxp.fastdemo.controller
+zookeeper:
+  host: 192.168.30.128:2181
+

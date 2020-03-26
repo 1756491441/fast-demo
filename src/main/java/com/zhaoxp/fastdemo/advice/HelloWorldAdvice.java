@@ -15,7 +15,7 @@ import java.util.*;
  * @Date 2019/12/15 14:20
  * @Version 1.0
  **/
-@RestControllerAdvice(basePackages = "com.zhaoxp.fastdemo.Controller")
+@RestControllerAdvice(basePackages = "com.zhaoxp.fastdemo.controller")
 public class HelloWorldAdvice {
 
     @ExceptionHandler(NullPointerException.class)

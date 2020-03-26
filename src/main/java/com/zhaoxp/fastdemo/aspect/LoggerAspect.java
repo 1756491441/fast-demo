@@ -1,8 +1,11 @@
 package com.zhaoxp.fastdemo.aspect;
 
+import ch.qos.logback.core.util.TimeUtil;
 import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.logging.log4j.util.Timer;
 import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
@@ -12,8 +15,13 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 /**
@@ -55,5 +63,13 @@ public class LoggerAspect {
             log.error("返回参数异常", e);
         }
         return result;
+    }
+
+    @AfterThrowing(value = "webLog()", throwing = "throwable")
+    public void doAfterThrowing(Throwable throwable) {
+        // 保存异常日志记录
+        log.error("发生异常时间：{}", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+                .format(new Date()));
+        log.error("抛出异常：{}", throwable.getMessage());
     }
 }
