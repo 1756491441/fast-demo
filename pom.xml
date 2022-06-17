@@ -16,7 +16,7 @@
 
     <properties>
         <java.version>1.8</java.version>
-        <fastjson.version>1.2.62</fastjson.version>
+        <fastjson.version>1.2.83</fastjson.version>
         <lombok.version>1.18.4</lombok.version>
         <hutool-all.version>4.4.2</hutool-all.version>
         <commons.fileupload.version>1.4</commons.fileupload.version>
