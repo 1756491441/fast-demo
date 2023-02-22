@@ -19,7 +19,7 @@
         <fastjson.version>1.2.62</fastjson.version>
         <lombok.version>1.18.4</lombok.version>
         <hutool-all.version>4.4.2</hutool-all.version>
-        <commons.fileupload.version>1.4</commons.fileupload.version>
+        <commons.fileupload.version>1.5</commons.fileupload.version>
         <commons.lang3.version>3.8.1</commons.lang3.version>
         <dubbo.starter.version>2.7.5</dubbo.starter.version>
         <curator.version>4.2.0</curator.version>
